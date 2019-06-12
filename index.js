@@ -22,12 +22,15 @@ class Formatter {
       "by",
       "from"
     ];
-    newAr.push(wordsArr[0].charAt(0).toUpperCase() + wordsArr[0].slice(1));
-    for (let i = 1; i < wordsArr.length; i++) {
-      if (exceptions.includes(wordsArr[i])) {
-        newAr.push(wordsArr[i]);
+    for (let i = 0; i < wordsArr.length; i++) {
+      if (i === 0) {
+        newAr.push(this.capitalize(wordsArr[i]));
       } else {
-        newAr.push(wordsArr[i].charAt(0).toUpperCase() + wordsArr[i].slice(1));
+        if (exceptions.includes(wordsArr[i])) {
+          newAr.push(wordsArr[i]);
+        } else {
+          newAr.push(this.capitalize(wordsArr[i]));
+        }
       }
     }
     return newAr.join(" ");
